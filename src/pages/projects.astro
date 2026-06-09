@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout title="Projects" description="Things I've built.">
+  <div class="mx-auto max-w-[640px] px-6">
+    <Header />
+
+    <section class="py-16 sm:py-24">
+      <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-8">Projects</h1>
+
+      <div class="space-y-10">
+        <div>
+          <h2 class="text-base font-medium mb-2">Linktank</h2>
+          <p class="text-sm leading-relaxed opacity-60 max-w-[500px] mb-3">
+            Think tank event discovery platform. Aggregates public policy events
+            from 1,300+ think tanks, research institutions, and government bodies
+            into a searchable, filterable feed. Built with Next.js, MongoDB,
+            Python scrapers, Clerk, Stripe.
+          </p>
+          <a href="https://linktank.io" target="_blank" rel="noopener noreferrer" class="text-sm no-underline hover:opacity-60 transition-opacity opacity-60">
+            linktank.io &nearr;
+          </a>
+        </div>
+
+        <div>
+          <h2 class="text-base font-medium mb-2">Vessel</h2>
+          <p class="text-sm leading-relaxed opacity-60 max-w-[500px] mb-3">
+            Community platform designed for peer-led AI learning cohorts.
+            Built for small groups to learn together, share progress, and
+            hold each other accountable.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-base font-medium mb-2">NBIC (New Brunswick Innovation Cluster)</h2>
+          <p class="text-sm leading-relaxed opacity-60 max-w-[500px] mb-3">
+            Building the innovation ecosystem in New Brunswick. Connecting
+            startups, researchers, and capital to accelerate regional tech
+            growth.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-base font-medium mb-2">Previously</h2>
+          <p class="text-sm leading-relaxed opacity-60 max-w-[500px]">
+            Two prior startups before Linktank. Product roles across
+            early-stage B2B SaaS, marketplace, and edtech. Pattern I've seen
+            across all of them: the hardest problems are never technical —
+            they're about people, incentives, and systems.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </div>
+</BaseLayout>

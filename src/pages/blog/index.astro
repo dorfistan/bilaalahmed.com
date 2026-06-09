@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+// Blog posts are auto-discovered from markdown files in this directory.
+// Add new posts as .md files in src/pages/blog/.
+// This page lists non-draft posts sorted by date (newest first).
+// ---
+// PLEASE DO NOT EDIT THE LIST BELOW DIRECTLY.
+// Posts are defined in standalone .md files. This page renders them.
+// ---
+
+interface Post {
+  title: string;
+  description: string;
+  pubDate: string;
+  slug: string;
+  draft?: boolean;
+}
+
+const posts: Post[] = [
+  {
+    title: "Hello World",
+    description: "First post on the new site.",
+    pubDate: "2026-06-09",
+    slug: "hello-world",
+    draft: false,
+  },
+];
+
+const visible = posts.filter((p) => !p.draft).sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+---
+
+<BaseLayout title="Writing" description="Blog posts and essays by Bilaal Ahmed.">
+  <div class="mx-auto max-w-[640px] px-6">
+    <Header />
+
+    <section class="py-16 sm:py-24">
+      <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-8">Writing</h1>
+
+      <div class="space-y-6">
+        {visible.map((post) => (
+          <div>
+            <a href={`/blog/${post.slug}`} class="text-base font-medium no-underline hover:opacity-60 transition-opacity">
+              {post.title}
+            </a>
+            <p class="text-sm mt-0.5 leading-relaxed opacity-60">{post.description}</p>
+            <p class="text-sm mt-0.5 opacity-50">
+              {new Date(post.pubDate).toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </p>
+          </div>
+        ))}
+        {visible.length === 0 && (
+          <p class="text-sm opacity-50">Nothing here yet. Check back soon.</p>
+        )}
+      </div>
+    </section>
+
+    <Footer />
+  </div>
+</BaseLayout>

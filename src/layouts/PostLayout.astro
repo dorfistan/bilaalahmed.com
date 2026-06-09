@@ -1,0 +1,28 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const { title, description, pubDate } = Astro.props;
+const date = pubDate ? new Date(pubDate) : new Date();
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="mx-auto max-w-[640px] px-6">
+    <article class="py-16 sm:py-24">
+      <header class="mb-10">
+        <a href="/blog" class="text-sm no-underline opacity-50 hover:opacity-100 transition-opacity">&larr; Back to writing</a>
+        <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight leading-tight mb-3 mt-6">
+          {title}
+        </h1>
+        <p class="text-sm opacity-50">
+          {date.toLocaleDateString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+          })}
+        </p>
+      </header>
+      <div class="prose prose-sm sm:prose-base">
+        <slot />
+      </div>
+    </article>
+  </div>
+</BaseLayout>

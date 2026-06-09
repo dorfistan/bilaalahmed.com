@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout title="Now" description="What I'm up to right now.">
+  <div class="mx-auto max-w-[640px] px-6">
+    <Header />
+
+    <section class="py-16 sm:py-24">
+      <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-6">Now</h1>
+      <p class="text-sm opacity-50 mb-10">
+        Updated June 2026 &middot; <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer" class="no-underline hover:opacity-60 transition-opacity">What is a "now" page?</a>
+      </p>
+
+      <div class="space-y-8">
+        <div>
+          <h2 class="text-base font-medium mb-2">Building Linktank</h2>
+          <p class="text-sm leading-relaxed opacity-60 max-w-[500px]">
+            Full-steam on Linktank — growing the event database, onboarding
+            subscribers, and refining the product. The mission: make policy
+            events as easy to discover as tech conferences.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-base font-medium mb-2">Running an AI Learning Cohort</h2>
+          <p class="text-sm leading-relaxed opacity-60 max-w-[500px]">
+            Leading a peer cohort of builders exploring AI tools, agentic
+            workflows, and practical applications. We meet weekly, build
+            things, and share what works.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-base font-medium mb-2">Pursuing Product Leadership</h2>
+          <p class="text-sm leading-relaxed opacity-60 max-w-[500px]">
+            Looking for the right product leadership role. Interested in
+            early-stage B2B, AI-native products, and platform companies where
+            product thinking is actually valued.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-base font-medium mb-2">Writing More</h2>
+          <p class="text-sm leading-relaxed opacity-60 max-w-[500px]">
+            Committed to writing publicly about product strategy, systems
+            thinking, and the messy reality of building things. If you want
+            to follow along, <a href="/blog" class="no-underline hover:opacity-60 transition-opacity">here's the blog</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </div>
+</BaseLayout>

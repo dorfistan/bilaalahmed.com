@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  [data-theme="dark"] {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    background-color: theme("colors.surface.DEFAULT");
+    color: theme("colors.ink.DEFAULT");
+  }
+
+  [data-theme="dark"] body {
+    background-color: theme("colors.surface.dark");
+    color: theme("colors.ink.dark");
+  }
+
+  ::selection {
+    background-color: theme("colors.ink.DEFAULT");
+    color: theme("colors.surface.DEFAULT");
+  }
+
+  [data-theme="dark"] ::selection {
+    background-color: theme("colors.ink.dark");
+    color: theme("colors.surface.dark");
+  }
+}
+
+@layer utilities {
+  .link-underline {
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 0.2s ease;
+  }
+
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+}
+
+html {
+  transition: color-scheme 0.2s ease;
+}

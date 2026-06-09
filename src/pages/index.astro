@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const posts = [
+  { title: "Hello World", pubDate: "2026-06-09", slug: "hello-world", draft: false },
+];
+const recentPosts = posts.filter((p) => !p.draft).sort(
+  (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
+).slice(0, 3);
+---
+
+<BaseLayout title="Bilaal Ahmed" description="Product strategist, 3x founder, builder.">
+  <div class="mx-auto max-w-[640px] px-6">
+    <Header />
+
+    <!-- Hero -->
+    <section class="py-16 sm:py-24">
+      <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight mb-5">
+        Bilaal Ahmed
+      </h1>
+      <p class="text-base leading-relaxed opacity-70 max-w-[520px]">
+        Product strategist and 3x founder. I build products, systems, and teams
+        that turn complex problems into clear outcomes. Currently building
+        <a href="https://linktank.io" target="_blank" rel="noopener noreferrer" class="no-underline hover:opacity-60 transition-opacity">Linktank</a>
+        &mdash; think tank event discovery.
+      </p>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="pb-16">
+      <h2 class="text-sm font-medium uppercase tracking-widest mb-6 opacity-50">Projects</h2>
+      <div class="space-y-6">
+        <div>
+          <a href="/projects" class="text-base font-medium no-underline hover:opacity-60 transition-opacity">Linktank</a>
+          <p class="text-sm mt-1 leading-relaxed opacity-60 max-w-[480px]">
+            Think tank event discovery platform. Making policy events accessible to everyone.
+          </p>
+        </div>
+        <div>
+          <a href="/projects" class="text-base font-medium no-underline hover:opacity-60 transition-opacity">Vessel</a>
+          <p class="text-sm mt-1 leading-relaxed opacity-60 max-w-[480px]">
+            Community platform for peer learning cohorts.
+          </p>
+        </div>
+        <div>
+          <a href="/projects" class="text-base font-medium no-underline hover:opacity-60 transition-opacity">NBIC</a>
+          <p class="text-sm mt-1 leading-relaxed opacity-60 max-w-[480px]">
+            New Brunswick Innovation Cluster &mdash; building the innovation ecosystem.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Writing -->
+    {recentPosts.length > 0 && (
+      <section class="pb-16">
+        <h2 class="text-sm font-medium uppercase tracking-widest mb-6 opacity-50">Writing</h2>
+        <div class="space-y-5">
+          {recentPosts.map((post) => (
+            <div>
+              <a href={`/blog/${post.slug}`} class="text-base font-medium no-underline hover:opacity-60 transition-opacity">
+                {post.title}
+              </a>
+              <p class="text-sm mt-0.5 opacity-50">
+                {new Date(post.pubDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+              </p>
+            </div>
+          ))}
+        </div>
+        {posts.filter((p) => !p.draft).length > 3 && (
+          <a href="/blog" class="inline-block mt-6 text-sm no-underline hover:opacity-60 transition-opacity opacity-60">
+            View all posts &rarr;
+          </a>
+        )}
+      </section>
+    )}
+
+    <Footer />
+  </div>
+</BaseLayout>
